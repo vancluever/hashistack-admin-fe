@@ -20,3 +20,5 @@ RUN apk add --no-cache --virtual mod-auth-openidc-runtime-deps libcurl jansson p
 
 COPY conf/httpd.conf /usr/local/apache2/conf/httpd.conf
 COPY assets/* /usr/local/apache2/htdocs/
+
+COPY httpd-foreground /usr/local/bin/

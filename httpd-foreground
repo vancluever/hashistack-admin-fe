@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+
+# Apache gets grumpy about PID files pre-existing
+rm -f /usr/local/apache2/logs/httpd.pid
+
+if [ -z "${CONSUL_BACKEND_ADDR}" ]; then
+  export CONSUL_BACKEND_ADDR="127.0.0.1"
+fi
+
+if [ -z "${NOMAD_BACKEND_ADDR}" ]; then
+  export NOMAD_BACKEND_ADDR="127.0.0.1"
+fi
+
+exec httpd -DFOREGROUND
